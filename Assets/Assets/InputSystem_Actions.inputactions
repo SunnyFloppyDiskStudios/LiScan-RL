@@ -28,7 +28,7 @@
                 {
                     "name": "",
                     "id": "abb6309b-b16c-476f-a9a5-2b7aa1863f43",
-                    "path": "<OculusTouchController>/triggerPressed",
+                    "path": "<OculusTouchController>{RightHand}/triggerPressed",
                     "interactions": "",
                     "processors": "",
                     "groups": ";XR",
@@ -39,7 +39,7 @@
                 {
                     "name": "",
                     "id": "efc84cc1-5e64-450d-a8cd-dbe4133457df",
-                    "path": "<Mouse>/leftButton",
+                    "path": "<Keyboard>/q",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
@@ -50,10 +50,21 @@
                 {
                     "name": "",
                     "id": "34ee5741-a71a-4c0b-bad6-ee50c109ad54",
-                    "path": "",
+                    "path": "<OculusTouchController>{RightHand}/gripPressed",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": ";XR",
+                    "action": "LineAction",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a8ffe308-a6a3-4149-9d6f-79af6be60239",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
                     "action": "LineAction",
                     "isComposite": false,
                     "isPartOfComposite": false

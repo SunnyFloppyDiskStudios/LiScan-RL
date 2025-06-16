@@ -28,14 +28,14 @@ namespace LIDAR {
 
         private void Update() {
             int shootType = 0;
-            bool didShootThisUpdate = false; // 0 = burst, 1 = line
+            bool didShootThisUpdate = false;
             
             if (clickAction.ReadValue<float>() > 0f) {
                 didShootThisUpdate = true;
                 shootType = 0;
             }
 
-            if (lineAction.WasPressedThisFrame()) {
+            if (lineAction.ReadValue<float>() > 0f) {
                 didShootThisUpdate = true;
                 shootType = 1;
             }
@@ -58,20 +58,40 @@ namespace LIDAR {
                     }
 
                     break;
-                }
-                case 1:
-                    // shoot from up to down in a line, dots have higher spread but still 20
-                    /*
-                     * •••••••••••••••••••
-                     * •••••••••••••••••••
-                     * •••••••••••••••••••
-                     * •••••••••••••••••••
-                     * 
-                     */
-                    
-                    
-                    // same other logic like above
+                } 
+                case 1: {
+                    Transform gunT = gun.transform;
+
+                    int totalLines = 5;
+                    float lineSpacing = 0.2f;
+                    float horizontalSpread = 1.0f;
+
+                    Vector3 baseForward = gunT.forward;
+                    Vector3 baseRight = gunT.right;
+                    Vector3 baseUp = gunT.up;
+
+                    Vector3 origin = gunT.position + baseForward * 1.0f;
+
+                    for (int line = 0; line < totalLines; line++) {
+                        int nodesInLine = Random.Range(3, 11);
+                        float lineOffsetY = -line * lineSpacing;
+                        Vector3 lineCenter = origin + baseUp * lineOffsetY;
+
+                        for (int i = 0; i < nodesInLine; i++) {
+                            float t = (nodesInLine == 1) ? 0f : (i / (float)(nodesInLine - 1));
+                            float xOffset = (t - 0.5f) * horizontalSpread + Random.Range(-0.05f, 0.05f);
+
+                            Vector3 rayOrigin = lineCenter + baseRight * xOffset;
+                            Vector3 rayDirection = -baseUp;
+
+                            Ray ray = new Ray(rayOrigin, rayDirection);
+                            if (Physics.Raycast(ray, out RaycastHit hit)) {
+                                GetSpeciality(hit);
+                            }
+                        }
+                    }
                     break;
+                }
             }
         }
         
