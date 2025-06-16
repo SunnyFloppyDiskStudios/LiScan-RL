@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{5d5e6478-6917-4007-ae8d-7692ec4d2546}">
+		<property name="assetPath">
+			<value>gun ambience.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>9.999977324263039</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{7ddbba53-1682-48a8-8401-8a0dc3de39e8}</destination>
+		</relationship>
+	</object>
+</objects>
