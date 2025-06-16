@@ -38,6 +38,17 @@
                 },
                 {
                     "name": "",
+                    "id": "efc84cc1-5e64-450d-a8cd-dbe4133457df",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "ClickAction",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "34ee5741-a71a-4c0b-bad6-ee50c109ad54",
                     "path": "",
                     "interactions": "",
