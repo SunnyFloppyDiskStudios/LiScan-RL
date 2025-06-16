@@ -14,14 +14,10 @@ namespace LIDAR {
         
         public int numberOfRays = 20;
         public float maxAngle = 30f;
-        public GameObject dotPrefab;
 
         private bool isShooting;
                 
         private EventInstance shootingSound;
-        
-        [Header("DEBUG")]
-        public int totalNodeCount;
         
         private void Start() {
             clickAction = InputSystem.actions.FindAction("ClickAction");
@@ -50,7 +46,6 @@ namespace LIDAR {
             if (!didShootThisUpdate) return;
             switch (shootType) {
                 case 0: {
-                    Transform cam = Camera.main.transform;
                     Transform gunT = gun.transform;
 
                     for (int i = 0; i < numberOfRays; i++) {
@@ -100,14 +95,6 @@ namespace LIDAR {
             Vector3 position = hit.point;
 
             InstancedNodeManager.instance.AddInstance(position, hit.transform.GetComponent<Renderer>().material.color);
-            totalNodeCount += 1;
-        }
-        
-        void ApplyColorToInstance(GameObject go, Color color) {
-            var renderer = go.GetComponent<Renderer>();
-            var props = new MaterialPropertyBlock();
-            props.SetColor(BaseColor, color);
-            renderer.SetPropertyBlock(props);
         }
 
         private void UpdateSound() {

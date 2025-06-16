@@ -91,3 +91,10 @@
 [WRN] OutputRingBuffer::read                   : Buffer starvation detected, requested 4096 bytes, 0 / 16384 bytes available.
 [WRN] OutputRingBuffer::read                   : Buffer starvation detected, requested 4096 bytes, 0 / 16384 bytes available.
 [WRN] OutputRingBuffer::read                   : Buffer starvation detected, requested 4096 bytes, 0 / 16384 bytes available.
+[LOG] Thread::callback                         : FMOD Studio bank load thread finished.
+[LOG] Thread::callback                         : FMOD Studio sample load thread finished.
+[LOG] LiveUpdate::release                      : 
+[LOG] LiveUpdate::reset                        : Reset connection (reason Disconnected)
+[LOG] Thread::callback                         : FMOD stream thread finished.
+[LOG] Thread::callback                         : FMOD mixer thread finished.
+[LOG] SystemI::closeInternal                   : Closed.
