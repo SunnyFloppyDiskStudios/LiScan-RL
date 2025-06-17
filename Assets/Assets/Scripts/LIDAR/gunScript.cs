@@ -10,7 +10,7 @@ namespace LIDAR {
         public GameObject gun;
         
         private InputAction clickAction;
-        private InputAction lineAction;
+        private InputAction spreadAction;
         
         public int numberOfRays = 20;
         public float maxAngle = 30f;
@@ -21,7 +21,7 @@ namespace LIDAR {
         
         private void Start() {
             clickAction = InputSystem.actions.FindAction("ClickAction");
-            lineAction = InputSystem.actions.FindAction("LineAction");
+            spreadAction = InputSystem.actions.FindAction("LineAction");
 
             shootingSound = AudioManager.instance.CreateInstance(FMODEvents.instance.gunShoot);
         }
@@ -35,7 +35,7 @@ namespace LIDAR {
                 shootType = 0;
             }
 
-            if (lineAction.ReadValue<float>() > 0f) {
+            if (spreadAction.ReadValue<float>() > 0f) {
                 didShootThisUpdate = true;
                 shootType = 1;
             }
