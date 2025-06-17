@@ -1522,7 +1522,7 @@ GameObject:
   - component: {fileID: 1762362335}
   - component: {fileID: 1762362334}
   m_Layer: 0
-  m_Name: RoomMeshChunk
+  m_Name: GlobalMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
