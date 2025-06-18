@@ -2,23 +2,21 @@ using UnityEngine;
 
 public class SpatialMeshColliderUpdater : MonoBehaviour {
     private MeshCollider meshCollider;
-    private RoomMeshAnchor roomMeshAnchor;
+    private MeshFilter meshFilter;
     private Mesh lastMesh;
 
-    void Start() {
-        meshCollider = GetComponent<MeshCollider>();
-        roomMeshAnchor = FindObjectOfType<RoomMeshAnchor>();
+    void Awake() {
+        meshFilter = GetComponent<MeshFilter>();
+        meshCollider = gameObject.AddComponent<MeshCollider>();
     }
 
     void Update() {
-        if (roomMeshAnchor == null) return;
-
-        Mesh currentMesh = roomMeshAnchor.GetComponent<MeshFilter>().sharedMesh;
-
+        var currentMesh = meshFilter.sharedMesh;
         if (currentMesh != null && currentMesh != lastMesh) {
+            lastMesh = currentMesh;
             meshCollider.sharedMesh = null;
             meshCollider.sharedMesh = currentMesh;
-            lastMesh = currentMesh;
+            Debug.Log("[RoomMesh] Collider updated with new mesh.");
         }
     }
 }
