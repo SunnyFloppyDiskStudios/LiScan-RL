@@ -4,7 +4,11 @@ Shader "Custom/InstancedDotShader"
         _BaseColor ("Color", Color) = (1,1,1,1)
     }
     SubShader {
-        Tags { "RenderType"="Opaque" }
+        Tags {
+            "RenderType"="Opaque"
+            "Queue"="Geometry+100"
+            
+        }
         Pass {
             HLSLPROGRAM
             #pragma vertex vert
