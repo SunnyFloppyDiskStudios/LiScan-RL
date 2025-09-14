@@ -1,3 +1,4 @@
+using Player.Pickup;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using FMOD.Studio;
@@ -14,10 +15,14 @@ namespace LIDAR {
         
         public int numberOfRays = 20;
         public float maxAngle = 30f;
+        public GameObject dotPrefab;
 
         private bool isShooting;
                 
         private EventInstance shootingSound;
+        
+        [Header("DEBUG")]
+        public int totalNodeCount;
         
         private void Start() {
             clickAction = InputSystem.actions.FindAction("ClickAction");
@@ -114,7 +119,26 @@ namespace LIDAR {
         void GetSpeciality(RaycastHit hit) {
             Vector3 position = hit.point;
 
+            if (hit.transform.GetComponent<HoldableItem>()) {
+                HoldableItem hli = hit.transform.GetComponent<HoldableItem>();
+                hli.interactionNodes += 1;
+                
+                GameObject newFab = Instantiate(dotPrefab, position, Quaternion.identity);
+                newFab.transform.parent = hli.transform;
+                ApplyColorToInstance(newFab, hli.GetComponent<Renderer>().material.color);
+                
+                return;
+            }
+
             InstancedNodeManager.instance.AddInstance(position, hit.transform.GetComponent<Renderer>().material.color);
+            totalNodeCount += 1;
+        }
+
+        void ApplyColorToInstance(GameObject go, Color color) {
+            var renderer = go.GetComponent<Renderer>();
+            var props = new MaterialPropertyBlock();
+            props.SetColor(BaseColor, color);
+            renderer.SetPropertyBlock(props);
         }
 
         private void UpdateSound() {
