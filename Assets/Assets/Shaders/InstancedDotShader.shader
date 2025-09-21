@@ -1,13 +1,12 @@
 Shader "Custom/InstancedDotShader"
 {
     Properties {
-        _BaseColor ("Color", Color) = (1,1,1,1)
+        [PerRendererData] _BaseColor ("Color", Color) = (1,1,1,1)
     }
     SubShader {
         Tags {
             "RenderType"="Opaque"
             "Queue"="Geometry+100"
-            
         }
         Pass {
             HLSLPROGRAM
@@ -32,18 +31,19 @@ Shader "Custom/InstancedDotShader"
                 UNITY_DEFINE_INSTANCED_PROP(float4, _BaseColor)
             UNITY_INSTANCING_BUFFER_END(Props)
 
-            Varyings vert(Attributes IN) {
+            Varyings vert (Attributes IN) {
                 Varyings OUT;
                 UNITY_SETUP_INSTANCE_ID(IN);
                 UNITY_TRANSFER_INSTANCE_ID(IN, OUT);
 
-                float4 worldPosition = mul(UNITY_MATRIX_M, IN.positionOS);
-                OUT.positionHCS = TransformWorldToHClip(worldPosition);
+                float3 worldPos = TransformObjectToWorld(IN.positionOS.xyz);
+                OUT.positionHCS = TransformWorldToHClip(worldPos);
                 OUT.color = UNITY_ACCESS_INSTANCED_PROP(Props, _BaseColor);
+
                 return OUT;
             }
 
-            half4 frag(Varyings IN) : SV_Target {
+            half4 frag (Varyings IN) : SV_Target {
                 return IN.color;
             }
             ENDHLSL

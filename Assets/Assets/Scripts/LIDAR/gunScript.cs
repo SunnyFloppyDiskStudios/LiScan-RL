@@ -28,7 +28,7 @@ namespace LIDAR {
             clickAction = InputSystem.actions.FindAction("ClickAction");
             spreadAction = InputSystem.actions.FindAction("LineAction");
 
-            shootingSound = AudioManager.instance.CreateInstance(FMODEvents.instance.gunShoot);
+            // shootingSound = AudioManager.instance.CreateInstance(FMODEvents.instance.gunShoot);
         }
 
         private void Update() {
@@ -118,17 +118,18 @@ namespace LIDAR {
 
         void GetSpeciality(RaycastHit hit) {
             Vector3 position = hit.point;
-
-            if (hit.transform.GetComponent<HoldableItem>()) {
-                HoldableItem hli = hit.transform.GetComponent<HoldableItem>();
-                hli.interactionNodes += 1;
+            
+            HoldableItem hli = hit.transform.GetComponent<HoldableItem>();
+            
+            InstancedNodeManager.instance.AddInstance(position, Color.white);
+            
+            if (hli is null) return;
+            
+            hli.interactionNodes += 1;
                 
-                GameObject newFab = Instantiate(dotPrefab, position, Quaternion.identity);
-                newFab.transform.parent = hli.transform;
-                ApplyColorToInstance(newFab, hli.GetComponent<Renderer>().material.color);
-                
-                return;
-            }
+            GameObject newFab = Instantiate(dotPrefab, position, Quaternion.identity);
+            newFab.transform.parent = hli.transform;
+            ApplyColorToInstance(newFab, hli.GetComponent<Renderer>().material.color);
 
             InstancedNodeManager.instance.AddInstance(position, hit.transform.GetComponent<Renderer>().material.color);
             totalNodeCount += 1;

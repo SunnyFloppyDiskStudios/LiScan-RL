@@ -15,6 +15,10 @@ public class InstancedNodeManager : MonoBehaviour {
     void Awake() {
         instance = this;
         mpb = new MaterialPropertyBlock();
+
+        if (instancedMaterial != null && !instancedMaterial.enableInstancing) {
+            instancedMaterial.enableInstancing = true;
+        }
     }
 
     public void AddInstance(Vector3 position, Color color) {
@@ -26,8 +30,15 @@ public class InstancedNodeManager : MonoBehaviour {
         for (int i = 0; i < matrices.Count; i += MAX_BATCH_SIZE) {
             int count = Mathf.Min(MAX_BATCH_SIZE, matrices.Count - i);
             mpb.Clear();
-            mpb.SetVectorArray("_BaseColor", colors.GetRange(i, count));
-            Graphics.DrawMeshInstanced(dotMesh, 0, instancedMaterial, matrices.GetRange(i, count), mpb);
+            mpb.SetVectorArray("_BaseColor", colors.GetRange(i, count).ToArray());
+            Graphics.DrawMeshInstanced(
+                dotMesh,
+                0,
+                instancedMaterial,
+                matrices.GetRange(i, count).ToArray(),
+                count,
+                mpb
+            );
         }
     }
 }
