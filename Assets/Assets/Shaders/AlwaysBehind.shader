@@ -1,15 +1,20 @@
-Shader "Custom/BlackNoDepth_URP"
+Shader "Custom/AlwaysBehind"
 {
     Properties { }
     SubShader
     {
-        Tags { "RenderPipeline"="UniversalPipeline" "Queue"="Background" "RenderType"="Opaque" }
+        Tags { 
+            "RenderPipeline"="UniversalPipeline" 
+            "Queue"="Geometry-1"
+            "RenderType"="Opaque"
+            "LightMode"="UniversalForward"
+        }
         LOD 100
 
         Cull Off
         ZWrite Off
         ZTest LEqual
-
+        
         Pass
         {
             ColorMask RGBA
@@ -32,7 +37,7 @@ Shader "Custom/BlackNoDepth_URP"
 
             half4 frag(Varyings IN) : SV_Target
             {
-                return half4(0,0,0,1);
+                return half4(0,0,0,1); // solid black
             }
             ENDHLSL
         }
