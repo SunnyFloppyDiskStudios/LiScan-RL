@@ -16,12 +16,8 @@ public class ForceLayer : MonoBehaviour {
 
         obj.layer = layer;
 
-        MeshFilter mf = obj.GetComponent<MeshFilter>();
-        if (mf is not null && mf.sharedMesh is not null) {
-            MeshCollider mc = obj.GetComponent<MeshCollider>();
-            if (mc is null) mc = obj.AddComponent<MeshCollider>();
-            mc.sharedMesh = mf.sharedMesh;
-            mc.convex = true;
+        if (obj.GetComponent<BoxCollider>() == null && obj.GetComponent<MeshFilter>() != null) {
+            obj.AddComponent<BoxCollider>();
         }
 
         foreach (Transform child in obj.transform) {
