@@ -24,7 +24,7 @@ public class InstancedNodeManager : MonoBehaviour {
     }
 
     public void AddInstance(Vector3 position, Color color) {
-        matrices.Add(Matrix4x4.TRS(position, Quaternion.identity, Vector3.one * 0.025f));
+        matrices.Add(Matrix4x4.TRS(position, Quaternion.identity, Vector3.one * 0.015f));
         colors.Add(color);
     }
 
