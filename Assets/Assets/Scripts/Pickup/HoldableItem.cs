@@ -18,8 +18,6 @@ namespace Player.Pickup {
         private void Start() {
             if (interactionNodes == 0) {
                 canGrab = false;
-                transform.GetComponent<Rigidbody>().isKinematic = true;
-                transform.GetComponent<Rigidbody>().useGravity = false;
                 transform.GetComponent<MeshRenderer>().enabled = false;
                 transform.GetComponent<Outline>().enabled = false;
             }
@@ -35,8 +33,6 @@ namespace Player.Pickup {
 
             if (interactionNodes < 10) {
                 canGrab = false;
-                transform.GetComponent<Rigidbody>().isKinematic = true;
-                transform.GetComponent<Rigidbody>().useGravity = false;
                 transform.GetComponent<MeshRenderer>().enabled = false;
                 transform.GetComponent<Outline>().enabled = false;
             }
@@ -44,8 +40,6 @@ namespace Player.Pickup {
             if (interactionNodes >= 10 & !pass) {
                 canGrab = true;
                 pass = true;
-                transform.GetComponent<Rigidbody>().isKinematic = false;
-                transform.GetComponent<Rigidbody>().useGravity = true;
                 transform.GetComponent<MeshRenderer>().enabled = true;
                 transform.GetComponent<Outline>().enabled = true;
             }
