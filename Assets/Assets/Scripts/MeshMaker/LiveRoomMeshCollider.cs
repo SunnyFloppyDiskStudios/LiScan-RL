@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 public class LiveRoomMeshCollider : MonoBehaviour {
     private readonly List<GameObject> colliders = new();
+    public int roomLayer = 10; // Literally anything that's not GAME
 
     void Start() {
         InvokeRepeating(nameof(RefreshColliders), 2f, 3f);
@@ -19,10 +20,12 @@ public class LiveRoomMeshCollider : MonoBehaviour {
         foreach (var mf in meshObjects) {
             if (mf.sharedMesh == null) continue;
 
-            var mc = mf.GetComponent<MeshCollider>();
             var anchor = mf.GetComponentInParent<OVRSceneAnchor>();
 
             GameObject go = new GameObject($"RuntimeCollider_{mf.name}");
+
+            SetLayerRecursive(go, roomLayer);
+
             go.transform.SetPositionAndRotation(mf.transform.position, mf.transform.rotation);
             go.transform.localScale = mf.transform.lossyScale;
 
@@ -34,6 +37,13 @@ public class LiveRoomMeshCollider : MonoBehaviour {
             newMC.convex = false;
 
             colliders.Add(go);
+        }
+    }
+
+    void SetLayerRecursive(GameObject obj, int layer) {
+        obj.layer = layer;
+        foreach (Transform child in obj.GetComponentsInChildren<Transform>(true)) {
+            child.gameObject.layer = layer;
         }
     }
 }

@@ -2,13 +2,18 @@ using UnityEngine;
 
 public class CameraLayerFilter : MonoBehaviour {
     public int layerToRender = 7; // GAME
+    public bool includeDefault = true;
 
     void Start() {
-        Camera cam = transform.GetComponent<Camera>();
+        Camera cam = GetComponent<Camera>();
         if (cam != null) {
-            cam.cullingMask = 1 << layerToRender;
+            int mask = 1 << layerToRender;
+            if (includeDefault) {
+                mask |= 1 << 0;
+            }
+            cam.cullingMask = mask;
         } else {
-            Debug.LogWarning("No main camera found!");
+            Debug.LogWarning("No camera found on this GameObject!");
         }
     }
 }
