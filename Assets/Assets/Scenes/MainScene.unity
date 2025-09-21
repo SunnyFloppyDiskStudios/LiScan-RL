@@ -1719,7 +1719,7 @@ MonoBehaviour:
   gun: {fileID: 1054111804762319}
   numberOfRays: 20
   maxAngle: 30
-  dotPrefab: {fileID: 0}
+  dotPrefab: {fileID: 1277551178}
   totalNodeCount: 0
 --- !u!114 &765140769
 MonoBehaviour:
