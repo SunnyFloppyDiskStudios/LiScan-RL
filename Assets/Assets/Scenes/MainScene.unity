@@ -1622,6 +1622,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dotMesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
   instancedMaterial: {fileID: 2100000, guid: 8c314e6c31dff430582e91c1c658f042, type: 2}
+  nodeCamera: {fileID: 832652857}
 --- !u!4 &765140767
 Transform:
   m_ObjectHideFlags: 0

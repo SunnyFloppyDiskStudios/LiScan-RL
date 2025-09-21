@@ -11,6 +11,8 @@ public class InstancedNodeManager : MonoBehaviour {
 
     private MaterialPropertyBlock mpb;
     private const int MAX_BATCH_SIZE = 1023;
+    
+    public Camera nodeCamera;
 
     void Awake() {
         instance = this;
@@ -31,13 +33,18 @@ public class InstancedNodeManager : MonoBehaviour {
             int count = Mathf.Min(MAX_BATCH_SIZE, matrices.Count - i);
             mpb.Clear();
             mpb.SetVectorArray("_BaseColor", colors.GetRange(i, count).ToArray());
+
             Graphics.DrawMeshInstanced(
                 dotMesh,
                 0,
                 instancedMaterial,
                 matrices.GetRange(i, count).ToArray(),
                 count,
-                mpb
+                mpb,
+                UnityEngine.Rendering.ShadowCastingMode.Off,
+                false,
+                0,
+                nodeCamera
             );
         }
     }
