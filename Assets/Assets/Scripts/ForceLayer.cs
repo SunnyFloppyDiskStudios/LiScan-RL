@@ -1,12 +1,11 @@
 using UnityEngine;
 
 public class ForceLayer : MonoBehaviour {
-    public int keepLayer = 7;
-    public int newLayer = 3;
+    public int newLayer = 8;
 
     void Update() {
         foreach (GameObject go in FindObjectsOfType<GameObject>()) {
-            if (go.layer != keepLayer) {
+            if (go.layer != 7 && go.layer != 2) {
                 SetLayerRecursively(go, newLayer);
             }
         }
