@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ForceLayer : MonoBehaviour {
     public int keepLayer = 7;
-    public int newLayer = 2;
+    public int newLayer = 3;
 
     void Update() {
         foreach (GameObject go in FindObjectsOfType<GameObject>()) {
