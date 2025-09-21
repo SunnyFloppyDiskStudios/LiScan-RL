@@ -1060,7 +1060,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnRoomMeshLoadCompleted:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 765140769}
+        m_TargetAssemblyTypeName: RoomMeshLayerSetter, Assembly-CSharp
+        m_MethodName: SetLayer
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &328449772
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1601,6 +1613,8 @@ GameObject:
   - component: {fileID: 765140767}
   - component: {fileID: 765140766}
   - component: {fileID: 765140768}
+  - component: {fileID: 765140769}
+  - component: {fileID: 765140770}
   m_Layer: 7
   m_Name: Core
   m_TagString: Untagged
@@ -1661,6 +1675,32 @@ MonoBehaviour:
   maxAngle: 30
   dotPrefab: {fileID: 0}
   totalNodeCount: 0
+--- !u!114 &765140769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 765140765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a03557667409f4eac9bb329dfa087c6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoomMeshLayerSetter
+--- !u!114 &765140770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 765140765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2017fb278d01f48399899b8edd31f54d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ForceLayer
+  keepLayer: 7
+  newLayer: 2
 --- !u!114 &823369761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2350,6 +2390,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraLayerFilter
   layerToRender: 7
+  includeDefault: 1
 --- !u!1 &834655687
 GameObject:
   m_ObjectHideFlags: 0
@@ -4158,6 +4199,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraLayerFilter
   layerToRender: 7
+  includeDefault: 1
 --- !u!20 &20000011358747117
 Camera:
   m_ObjectHideFlags: 0
@@ -4240,6 +4282,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraLayerFilter
   layerToRender: 7
+  includeDefault: 1
 --- !u!114 &114473265317197669
 MonoBehaviour:
   m_ObjectHideFlags: 0
