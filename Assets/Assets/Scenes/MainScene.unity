@@ -3126,7 +3126,7 @@ GameObject:
   - component: {fileID: 1062501569}
   - component: {fileID: 1062501568}
   - component: {fileID: 1062501567}
-  m_Layer: 2
+  m_Layer: 7
   m_Name: polySurface7 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3237,7 +3237,7 @@ GameObject:
   - component: {fileID: 1108997323}
   - component: {fileID: 1108997322}
   - component: {fileID: 1108997321}
-  m_Layer: 2
+  m_Layer: 7
   m_Name: polySurface5 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3482,7 +3482,7 @@ GameObject:
   - component: {fileID: 1277551182}
   - component: {fileID: 1277551181}
   - component: {fileID: 1277551180}
-  m_Layer: 2
+  m_Layer: 7
   m_Name: pSphere2 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3615,7 +3615,7 @@ GameObject:
   - component: {fileID: 1314964131}
   - component: {fileID: 1314964133}
   - component: {fileID: 1314964132}
-  m_Layer: 2
+  m_Layer: 7
   m_Name: oculus_controller_l_MeshX (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class PuzzleRaycaster : MonoBehaviour {
     public Transform[] puzzles;
@@ -8,6 +9,12 @@ public class PuzzleRaycaster : MonoBehaviour {
     public Transform head;
 
     void Start() {
+        StartCoroutine(DelayedPlacement());
+    }
+
+    IEnumerator DelayedPlacement() {
+        yield return new WaitForSeconds(10f);
+
         foreach (Transform child in puzzles) {
             Vector3 origin = child.position;
 
@@ -22,6 +29,7 @@ public class PuzzleRaycaster : MonoBehaviour {
             } else {
                 endpoint = origin + randomDir * fallbackDistance;
             }
+
             child.position = endpoint;
         }
     }
