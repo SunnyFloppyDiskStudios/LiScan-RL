@@ -126,8 +126,6 @@ namespace LIDAR {
                 return;
             }
 
-            GameObject newFab = Instantiate(dotPrefab, position, Quaternion.identity);
-            ApplyColorToInstance(newFab, Color.white);
             InstancedNodeManager.instance.AddInstance(position, Color.white);
             totalNodeCount += 1;
         }
@@ -154,3 +152,4 @@ namespace LIDAR {
         }
     }
 }
+
