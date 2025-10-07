@@ -1,53 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-8525716852523383555
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Background.bank
-  m_EditorClassIdentifier: 
-  Path: liscanrl/Build/Desktop/Background.bank
-  Name: Background
-  StudioPath: bank:/Background
-  lastModified: 638857014683005896
-  FileSizes:
-  - Name: Desktop
-    Value: 506
-  Exists: 1
---- !u!114 &-7807614413931660217
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Shoot
-  m_EditorClassIdentifier: 
-  Path: event:/Shoot
-  Guid:
-    Data1: 1268311039
-    Data2: 1084783375
-    Data3: -1416821097
-    Data4: 2106760003
-  Banks:
-  - {fileID: 5976875480731894099}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 0
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 9999
---- !u!114 &-5677438397369505693
+--- !u!114 &-2707910298270552230
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -58,7 +11,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
   m_Name: bank:/Master.bank
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorBankRef
   Path: liscanrl/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
@@ -78,25 +31,25 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d32cf7c32a3ed8347bac48ef5ed56d82, type: 3}
   m_Name: FMODStudioCache
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EventCache
   EditorBanks:
-  - {fileID: 3254498919895435093}
-  - {fileID: -8525716852523383555}
-  - {fileID: -5677438397369505693}
-  - {fileID: 5976875480731894099}
+  - {fileID: 670141930219203298}
+  - {fileID: 915344837676800990}
+  - {fileID: -2707910298270552230}
+  - {fileID: 4114729236421834229}
   EditorEvents:
-  - {fileID: -7807614413931660217}
+  - {fileID: 7643545270851545791}
   EditorParameters: []
   MasterBanks:
-  - {fileID: -5677438397369505693}
+  - {fileID: -2707910298270552230}
   StringsBanks:
-  - {fileID: 3254498919895435093}
-  cacheVersion: 131847
+  - {fileID: 670141930219203298}
+  cacheVersion: 131849
   cacheTime: 638857014684271294
   SerializableEventsDict:
   - key: event:/Shoot
     index: 0
---- !u!114 &3254498919895435093
+--- !u!114 &670141930219203298
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -107,7 +60,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
   m_Name: bank:/Master.strings.bank
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorBankRef
   Path: liscanrl/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
@@ -116,7 +69,27 @@ MonoBehaviour:
   - Name: Desktop
     Value: 854
   Exists: 1
---- !u!114 &5976875480731894099
+--- !u!114 &915344837676800990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Background.bank
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorBankRef
+  Path: liscanrl/Build/Desktop/Background.bank
+  Name: Background
+  StudioPath: bank:/Background
+  lastModified: 638857014683005896
+  FileSizes:
+  - Name: Desktop
+    Value: 506
+  Exists: 1
+--- !u!114 &4114729236421834229
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -127,7 +100,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
   m_Name: bank:/SFX.bank
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorBankRef
   Path: liscanrl/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
@@ -136,3 +109,30 @@ MonoBehaviour:
   - Name: Desktop
     Value: 35200
   Exists: 1
+--- !u!114 &7643545270851545791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Shoot
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Shoot
+  Guid:
+    Data1: 1268311039
+    Data2: 1084783375
+    Data3: -1416821097
+    Data4: 2106760003
+  Banks:
+  - {fileID: 4114729236421834229}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 9999
