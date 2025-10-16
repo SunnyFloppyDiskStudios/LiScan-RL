@@ -4,7 +4,7 @@ public class ForceLayer : MonoBehaviour {
     public int newLayer = 8;
 
     void Update() {
-        foreach (GameObject go in FindObjectsOfType<GameObject>()) {
+        foreach (GameObject go in FindObjectsByType<GameObject>(FindObjectsSortMode.None)) {
             if (go.layer != 7 && go.layer != 8) {
                 SetLayerRecursively(go, newLayer);
             }

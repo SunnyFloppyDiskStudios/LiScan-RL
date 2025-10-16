@@ -147,7 +147,7 @@ namespace LIDAR {
                 shootingSound.getPlaybackState(out state);
 
                 if (state == PLAYBACK_STATE.STOPPED) {
-                    RuntimeManager.AttachInstanceToGameObject(shootingSound, transform, transform.GetComponent<Rigidbody>());
+                    RuntimeManager.AttachInstanceToGameObject(shootingSound, transform.gameObject, transform.GetComponent<Rigidbody>());
                     shootingSound.start();
                 }
             } else {

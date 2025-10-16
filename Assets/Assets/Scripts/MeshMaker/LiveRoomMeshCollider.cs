@@ -15,7 +15,7 @@ public class LiveRoomMeshCollider : MonoBehaviour {
         }
         colliders.Clear();
 
-        var meshObjects = FindObjectsOfType<MeshFilter>();
+        var meshObjects = FindObjectsByType<MeshFilter>(FindObjectsSortMode.None);
 
         foreach (var mf in meshObjects) {
             if (mf.sharedMesh == null) continue;
