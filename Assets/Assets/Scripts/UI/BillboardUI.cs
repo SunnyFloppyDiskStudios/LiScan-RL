@@ -1,15 +1,22 @@
 using UnityEngine;
 
-public class BillboardUI : MonoBehaviour {
-    private Camera cam;
+namespace Player.PUI {
+    public class BillboardUI : MonoBehaviour {
+        // make the UI act like a billboard element
+        // billboard UIs face the player at all times
+        
+        private Camera cam;
 
-    void Start() {
-        cam = Camera.main;
-    }
+        void Start() {
+            // get camera
+            cam = Camera.main;
+        }
     
-    void LateUpdate() {
-        if (cam is not null) {
-            transform.LookAt(cam.transform, Vector3.up);
+        void LateUpdate() {
+            if (cam is not null) {
+                // face the camera to the player (simple enough)
+                transform.LookAt(cam.transform, Vector3.up);
+            }
         }
     }
 }

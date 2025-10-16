@@ -5549,7 +5549,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2017fb278d01f48399899b8edd31f54d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ForceLayer
-  newLayer: 8
+  newLayer: 10
 --- !u!114 &765140771
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5562,6 +5562,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d309f96403cc4024b3246d6babd43ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TutorialFlow
+  cam: {fileID: 0}
   beginObject: {fileID: 302136887}
   beginGUI: {fileID: 95348014}
   beginText: {fileID: 588018034}

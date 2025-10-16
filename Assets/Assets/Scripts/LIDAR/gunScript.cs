@@ -5,13 +5,15 @@ using FMOD.Studio;
 using FMODUnity;
 using STOP_MODE = FMOD.Studio.STOP_MODE;
 
-namespace LIDAR {
+namespace Player.LIDAR {
     public class gunScript : MonoBehaviour {
+        // the main mechanic, shooting nodes.
+        
         private static readonly int BaseColor = Shader.PropertyToID("_BaseColor");
         public GameObject gun;
         
         private InputAction clickAction;
-        private InputAction spreadAction;
+        private InputAction spreadAction; // not implemented
         
         public int numberOfRays = 20;
         public float maxAngle = 30f;
@@ -27,6 +29,7 @@ namespace LIDAR {
         public int totalNodeCount;
         
         private void Start() {
+            // get inputs and instantiate sound system
             clickAction = InputSystem.actions.FindAction("ClickAction");
             spreadAction = InputSystem.actions.FindAction("LineAction");
 
@@ -34,7 +37,8 @@ namespace LIDAR {
         }
 
         private void Update() {
-            if (canShoot) { 
+            // logic for how stuff should happen when the uer presses buttons.
+            if (canShoot) {
                 int shootType = 0;
                 bool didShootThisUpdate = false;
                 
@@ -42,69 +46,28 @@ namespace LIDAR {
                     didShootThisUpdate = true;
                     shootType = 0;
                 }
-
-                if (spreadAction.ReadValue<float>() > 0f) {
-                    didShootThisUpdate = true;
-                    shootType = 1;
-                }
                 
                 isShooting = didShootThisUpdate;
                 UpdateSound();
 
                 if (!didShootThisUpdate) return;
-                switch (shootType) {
-                    case 0: {
-                        Transform gunT = gun.transform;
+                
+                // actually shoot in circular pattern.
+                Transform gunT = gun.transform;
 
-                        for (int i = 0; i < numberOfRays; i++) {
-                            Vector3 direction = GetRandomDirectionInCone(gunT.forward, maxAngle);
-                            Ray ray = new Ray(gunT.position, direction);
+                for (int i = 0; i < numberOfRays; i++) {
+                    Vector3 direction = GetRandomDirectionInCone(gunT.forward, maxAngle);
+                    Ray ray = new Ray(gunT.position, direction);
 
-                            if (Physics.Raycast(ray, out RaycastHit hit)) {
-                                GetSpeciality(hit);
-                            }
-                        }
-
-                        break;
-                    } 
-                    case 1: {
-                        Transform gunT = gun.transform;
-
-                        int totalLines = 5;
-                        float lineSpacing = 0.2f;
-                        float horizontalSpread = 1.0f;
-
-                        Vector3 baseForward = gunT.forward;
-                        Vector3 baseRight = gunT.right;
-                        Vector3 baseUp = gunT.up;
-
-                        Vector3 origin = gunT.position + baseForward * 1.0f;
-
-                        for (int line = 0; line < totalLines; line++) {
-                            int nodesInLine = Random.Range(3, 11);
-                            float lineOffsetY = -line * lineSpacing;
-                            Vector3 lineCenter = origin + baseUp * lineOffsetY;
-
-                            for (int i = 0; i < nodesInLine; i++) {
-                                float t = (nodesInLine == 1) ? 0f : (i / (float)(nodesInLine - 1));
-                                float xOffset = (t - 0.5f) * horizontalSpread + Random.Range(-0.05f, 0.05f);
-
-                                Vector3 rayOrigin = lineCenter + baseRight * xOffset;
-                                Vector3 rayDirection = -baseUp;
-
-                                Ray ray = new Ray(rayOrigin, rayDirection);
-                                if (Physics.Raycast(ray, out RaycastHit hit)) {
-                                    GetSpeciality(hit);
-                                }
-                            }
-                        }
-                        break;
+                    if (Physics.Raycast(ray, out RaycastHit hit)) {
+                        GetSpeciality(hit);
                     }
                 }
             }
         }
         
         Vector3 GetRandomDirectionInCone(Vector3 forward, float maxAngleDegrees) {
+            // to shoot out from the  gun im using a cone shape, so it's like <
             float maxAngleRad = maxAngleDegrees * Mathf.Deg2Rad;
 
             float angle = Random.Range(0f, maxAngleRad);
@@ -121,6 +84,7 @@ namespace LIDAR {
 
 
         void GetSpeciality(RaycastHit hit) {
+            // figure out whether it's a power cube thing
             Vector3 position = hit.point;
 
             HoldableItem hli = hit.transform.GetComponent<HoldableItem>();
@@ -134,14 +98,8 @@ namespace LIDAR {
             totalNodeCount += 1;
         }
 
-        void ApplyColorToInstance(GameObject go, Color color) {
-            var renderer = go.GetComponent<Renderer>();
-            var props = new MaterialPropertyBlock();
-            props.SetColor(BaseColor, color);
-            renderer.SetPropertyBlock(props);
-        }
-
         private void UpdateSound() {
+            // play the gun sound.
             if (isShooting) {
                 PLAYBACK_STATE state;
                 shootingSound.getPlaybackState(out state);
