@@ -6888,6 +6888,7 @@ MonoBehaviour:
   usb2: {fileID: 1155620241}
   block3: {fileID: 1636287908}
   usb3: {fileID: 1756642258}
+  winGUI: {fileID: 1652885670}
 --- !u!1001 &1038863601
 PrefabInstance:
   m_ObjectHideFlags: 0

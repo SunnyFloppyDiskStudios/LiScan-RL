@@ -43,6 +43,8 @@ namespace Player.Flow {
             cam = Camera.main.transform;
             
             ToggleGUI(beginObject, true);
+            
+            gun.localScale = Vector3.zero;
         }
         
         void Update() {
@@ -76,6 +78,7 @@ namespace Player.Flow {
                     if (X.WasPressedThisFrame()) {
                         HideGUIFancy(objectiveText, 4);
                         gs.canShoot = true;
+                        gun.DOScale(Vector3.one, 0.2f);
                     }
                     break;
                 
@@ -104,7 +107,9 @@ namespace Player.Flow {
                     if (!cPosSet) { 
                         cPos = cam.position;
                     }
-
+                    
+                    // hey that layout looks funny... it'S AIIIII NOOOO IT'S AIII NOOOOOOOOO
+                    // no actually it's just more readable. not ai.
                     if (cam.position.x > cPos.x + offset ||
                         cam.position.y > cPos.y + offset ||
                         cam.position.z > cPos.z + offset) {
@@ -117,15 +122,15 @@ namespace Player.Flow {
         private void ShowGUIFancy(Transform gui, int s) {
             state = s;
             gui.DOScale(new Vector3(-0.1f, 0.1f, 1f), 0.2f)
-                .OnComplete(() => gui.DOScale(new Vector3(-1f, 0.1f, 1f), 0.5f)
-                    .OnComplete(() => gui.DOScale(new Vector3(-1f, 1f, 1f), 0.5f)));
+                .OnComplete(() => gui.DOScale(new Vector3(-1f, 0.1f, 1f), 0.25f)
+                    .OnComplete(() => gui.DOScale(new Vector3(-1f, 1f, 1f), 0.25f)));
         }
 
         private void HideGUIFancy(Transform gui, int s) {
             state = s;
             gui.DOScale(new Vector3(-1f, 0.1f, 1f), 0.2f)
-                .OnComplete(() => gui.DOScale(new Vector3(0f, 0.1f, 0f), 0.5f)
-                    .OnComplete(() => gui.DOScale(Vector3.zero, 0.5f)));
+                .OnComplete(() => gui.DOScale(new Vector3(0f, 0.1f, 0f), 0.25f)
+                    .OnComplete(() => gui.DOScale(Vector3.zero, 0.25f)));
         }
 
         private void ToggleGUI(Transform gui, bool active) {
