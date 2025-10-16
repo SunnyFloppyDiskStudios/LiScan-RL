@@ -163,7 +163,7 @@ GameObject:
   - component: {fileID: 89245536}
   - component: {fileID: 89245535}
   m_Layer: 0
-  m_Name: Image
+  m_Name: Shoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -251,7 +251,7 @@ GameObject:
   - component: {fileID: 95348015}
   - component: {fileID: 95348017}
   m_Layer: 0
-  m_Name: Image
+  m_Name: Begin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -951,7 +951,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 112276, guid: d9809c5e8418bb047bf2c8ba1d1a2cec, type: 3}
       propertyPath: m_Name
-      value: OVRControllerPrefab
+      value: LeftOVRControllerPrefab
       objectReference: {fileID: 0}
     - target: {fileID: 112276, guid: d9809c5e8418bb047bf2c8ba1d1a2cec, type: 3}
       propertyPath: m_Layer
@@ -1647,7 +1647,7 @@ GameObject:
   - component: {fileID: 463538867}
   - component: {fileID: 463538866}
   m_Layer: 0
-  m_Name: Canvas
+  m_Name: ShootCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5562,7 +5562,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d309f96403cc4024b3246d6babd43ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TutorialFlow
-  cam: {fileID: 0}
   beginObject: {fileID: 302136887}
   beginGUI: {fileID: 95348014}
   beginText: {fileID: 588018034}
@@ -5574,7 +5573,7 @@ MonoBehaviour:
   controlObject: {fileID: 370764790}
   shootGUI: {fileID: 89245534}
   moveGUI: {fileID: 1114950804}
-  winGUI: {fileID: 0}
+  winGUI: {fileID: 1652885670}
 --- !u!4 &773190230 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6133181868838817536, guid: d9809c5e8418bb047bf2c8ba1d1a2cec, type: 3}
@@ -6600,7 +6599,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 112276, guid: d9809c5e8418bb047bf2c8ba1d1a2cec, type: 3}
       propertyPath: m_Name
-      value: OVRControllerPrefab
+      value: RightOVRControllerPrefab
       objectReference: {fileID: 0}
     - target: {fileID: 112276, guid: d9809c5e8418bb047bf2c8ba1d1a2cec, type: 3}
       propertyPath: m_Layer
@@ -7278,7 +7277,7 @@ GameObject:
   - component: {fileID: 1114950806}
   - component: {fileID: 1114950805}
   m_Layer: 0
-  m_Name: Image
+  m_Name: Move
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7478,7 +7477,7 @@ GameObject:
   - component: {fileID: 1163053930}
   - component: {fileID: 1163053929}
   m_Layer: 0
-  m_Name: Canvas (2)
+  m_Name: WinnerCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7580,7 +7579,7 @@ GameObject:
   - component: {fileID: 1255569209}
   - component: {fileID: 1255569208}
   m_Layer: 0
-  m_Name: Canvas (1)
+  m_Name: ObjectiveCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8674,7 +8673,7 @@ GameObject:
   - component: {fileID: 1652885672}
   - component: {fileID: 1652885671}
   m_Layer: 0
-  m_Name: Image
+  m_Name: Win
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9076,7 +9075,7 @@ GameObject:
   - component: {fileID: 1917999957}
   - component: {fileID: 1917999956}
   m_Layer: 0
-  m_Name: CanvAS
+  m_Name: MoveCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9183,7 +9182,7 @@ GameObject:
   - component: {fileID: 1988107246}
   - component: {fileID: 1988107245}
   m_Layer: 0
-  m_Name: Image
+  m_Name: Escape
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9271,7 +9270,7 @@ GameObject:
   - component: {fileID: 2043917338}
   - component: {fileID: 2043917337}
   m_Layer: 0
-  m_Name: Canvas
+  m_Name: BeginCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

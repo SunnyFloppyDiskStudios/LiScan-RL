@@ -7,8 +7,6 @@ namespace Player.Flow {
     public class TutorialFlow : MonoBehaviour {
         // controls the UI's for tutorials in the game. and the main menu but that's irrelevant.
         
-        public Transform cam;
-        
         public Transform beginObject;
         public Transform beginGUI;
         public Transform beginText;
@@ -27,18 +25,22 @@ namespace Player.Flow {
 
         public Transform winGUI;
 
+        
         private int state;
 
         private InputAction X;
         private InputAction Shoot;
+        
+        private Transform cam;
 
         private bool cPosSet;
         private Vector3 cPos;
 
         void Start() {
-            // get input actions
+            // get stuff
             X = InputSystem.actions.FindAction("X");
             Shoot = InputSystem.actions.FindAction("ClickAction");
+            cam = Camera.main.transform;
             
             ToggleGUI(beginObject, true);
         }
