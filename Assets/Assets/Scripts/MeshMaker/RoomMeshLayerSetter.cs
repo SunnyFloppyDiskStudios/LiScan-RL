@@ -1,7 +1,7 @@
 using UnityEngine;
 
 public class RoomMeshLayerSetter : MonoBehaviour {
-    private int targetLayer = 2; // NOT GAME
+    private int targetLayer = 10; // NOT GAME
 
     public void SetLayer(MeshFilter meshFilter) {
         if (meshFilter != null) {
