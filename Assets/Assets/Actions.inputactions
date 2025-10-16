@@ -85,7 +85,7 @@
                     "path": "<OculusTouchController>{LeftHand}/primaryButton",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": ";XR",
                     "action": "X",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -96,7 +96,7 @@
                     "path": "<Gamepad>/buttonWest",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": ";XR;Gamepad",
                     "action": "X",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -107,7 +107,18 @@
                     "path": "<Keyboard>/x",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "X",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "97b54a18-365e-4b13-a07c-4d17e62a7fcc",
+                    "path": "<OculusTouchController>{RightHand}/primaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";XR",
                     "action": "X",
                     "isComposite": false,
                     "isPartOfComposite": false

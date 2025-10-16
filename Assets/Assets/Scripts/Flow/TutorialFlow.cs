@@ -4,6 +4,8 @@ using LIDAR;
 using UnityEngine.InputSystem;
 
 public class TutorialFlow : MonoBehaviour {
+    public Transform cam;
+    
     public Transform beginObject;
     public Transform beginGUI;
     public Transform beginText;
@@ -27,11 +29,14 @@ public class TutorialFlow : MonoBehaviour {
     private InputAction X;
     private InputAction Shoot;
 
+    private bool cPosSet;
+    private Vector3 cPos;
+
     void Start() {
         X = InputSystem.actions.FindAction("X");
         Shoot = InputSystem.actions.FindAction("ClickAction");
         
-        ToggleGUI(beginObject, false);
+        ToggleGUI(beginObject, true);
     }
     
     void Update() {
@@ -49,42 +54,61 @@ public class TutorialFlow : MonoBehaviour {
                 break;
             
             case 2:
-                gs.canShoot = true;
-                state = 3;
+                ToggleGUI(objectiveObject, true);
+                ShowGUIFancy(objectiveText, 3);
+                
                 break;
             
             case 3:
-                ToggleGUI(controlObject.transform, true);
-                ShowGUIFancy(shootGUI, 4);
-                break;
-            
-            case 4:
-                if (Shoot.WasPressedThisFrame()) {
-                    HideGUIFancy(shootGUI, 5);
+                if (X.WasPressedThisFrame()) {
+                    HideGUIFancy(objectiveText, 4);
+                    gs.canShoot = true;
                 }
                 break;
             
+            case 4:
+                ToggleGUI(controlObject.transform, true);
+                ShowGUIFancy(shootGUI, 5);
+                break;
+            
             case 5:
-                ShowGUIFancy(moveGUI, 6);
+                if (Shoot.WasPressedThisFrame()) {
+                    HideGUIFancy(shootGUI, 6);
+                }
                 break;
             
             case 6:
+                ShowGUIFancy(moveGUI, 7);
+                break;
+            
+            case 7:
+                var offset = 2f;
                 
-                
+                if (!cPosSet) { 
+                    cPos = cam.position;
+                }
+
+                if (cam.position.x > cPos.x + offset ||
+                    cam.position.y > cPos.y + offset ||
+                    cam.position.z > cPos.z + offset) {
+                    HideGUIFancy(moveGUI, 8);
+                }
                 break;
         }
     }
 
     private void ShowGUIFancy(Transform gui, int s) {
-        gui.DOScale(new Vector3(-1f, 0.1f, 0f), 0.5f)
-            .OnComplete(() => gui.DOScale(new Vector3(-1f, 1f, 1f), 0.5f)
-                .OnComplete(() => state = s));
+        state = s;
+        gui.DOScale(new Vector3(-0.1f, 0.1f, 1f), 0.2f)
+            .OnComplete(() => gui.DOScale(new Vector3(-1f, 0.1f, 1f), 0.5f)
+                .OnComplete(() => gui.DOScale(new Vector3(-1f, 1f, 1f), 0.5f)));
     }
 
     private void HideGUIFancy(Transform gui, int s) {
-        gui.DOScale(new Vector3(-1f, 0.1f, 0f), 0.5f)
-            .OnComplete(() => gui.DOScale(Vector3.zero, 0.5f)
-                .OnComplete(() => state = s));
+        state = s;
+        gui.DOScale(new Vector3(-1f, 0.1f, 1f), 0.2f)
+            .OnComplete(() => gui.DOScale(new Vector3(0f, 0.1f, 0f), 0.5f)
+                .OnComplete(() => gui.DOScale(Vector3.zero, 0.5f)));
     }
 
     private void ToggleGUI(Transform gui, bool active) {
