@@ -12,7 +12,7 @@ public class TutorialFlow : MonoBehaviour {
     public Transform objectiveText;
     
     public Transform gun;
-    public Transform rightController;
+    public Transform leftController;
 
     public gunScript gs;
 
@@ -30,51 +30,65 @@ public class TutorialFlow : MonoBehaviour {
     void Start() {
         X = InputSystem.actions.FindAction("X");
         Shoot = InputSystem.actions.FindAction("ClickAction");
+        
+        ToggleGUI(beginObject, false);
     }
     
     void Update() {
-        if (state == 0) {
-            gs.canShoot = false;
-            ShowGUIFancy(beginGUI);
-
-            state = 1;
-        }
-
-        if (state == 1) {
-            if (X.WasPressedThisFrame()) {
-                HideGUIFancy(beginGUI);
-                ToggleGUI(beginObject, false);
-                state = 2;
-            }
-        }
-
-        if (state == 2) {
-            gs.canShoot = true;
-            state = 3;
-        }
-
-        if (state == 3) {
+        switch (state) {
+            case 0:
+                gs.canShoot = false;
+                ShowGUIFancy(beginGUI, 1);
+                break;
             
+            case 1:
+                if (X.WasPressedThisFrame()) {
+                    HideGUIFancy(beginGUI, 2);
+                    ToggleGUI(beginObject, false);
+                }
+                break;
+            
+            case 2:
+                gs.canShoot = true;
+                state = 3;
+                break;
+            
+            case 3:
+                ToggleGUI(controlObject.transform, true);
+                ShowGUIFancy(shootGUI, 4);
+                break;
+            
+            case 4:
+                if (Shoot.WasPressedThisFrame()) {
+                    HideGUIFancy(shootGUI, 5);
+                }
+                break;
+            
+            case 5:
+                ShowGUIFancy(moveGUI, 6);
+                break;
+            
+            case 6:
+                
+                
+                break;
         }
     }
 
-    private void ShowGUIFancy(Transform gui) {
+    private void ShowGUIFancy(Transform gui, int s) {
         gui.DOScale(new Vector3(-1f, 0.1f, 0f), 0.5f)
-            .OnComplete(() => gui.DOScale(new Vector3(-1f, 1f, 1f), 0.5f));
+            .OnComplete(() => gui.DOScale(new Vector3(-1f, 1f, 1f), 0.5f)
+                .OnComplete(() => state = s));
     }
 
-    private void HideGUIFancy(Transform gui) {
+    private void HideGUIFancy(Transform gui, int s) {
         gui.DOScale(new Vector3(-1f, 0.1f, 0f), 0.5f)
-            .OnComplete(() => gui.DOScale(Vector3.zero, 0.5f));
+            .OnComplete(() => gui.DOScale(Vector3.zero, 0.5f)
+                .OnComplete(() => state = s));
     }
 
     private void ToggleGUI(Transform gui, bool active) {
-        if (active) {
-            gui.gameObject.SetActive(true);
-        } else {
-            gui.gameObject.SetActive(false);
-        }
-        
+        gui.gameObject.SetActive(active);
     }
 }
 
