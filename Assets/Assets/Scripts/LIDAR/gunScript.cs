@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using FMOD.Studio;
 using FMODUnity;
+using Player.Audio;
 using STOP_MODE = FMOD.Studio.STOP_MODE;
 
 namespace Player.LIDAR {
@@ -33,7 +34,7 @@ namespace Player.LIDAR {
             clickAction = InputSystem.actions.FindAction("ClickAction");
             spreadAction = InputSystem.actions.FindAction("LineAction");
 
-            // shootingSound = AudioManager.instance.CreateInstance(FMODEvents.instance.gunShoot);
+            shootingSound = AudioManager.instance.CreateInstance(FMODEvents.instance.gunShoot);
         }
 
         private void Update() {
