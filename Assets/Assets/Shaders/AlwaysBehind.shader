@@ -1,46 +1,49 @@
 Shader "Custom/AlwaysBehind"
 {
-    Properties { }
     SubShader
     {
-        Tags { 
-            "RenderPipeline"="UniversalPipeline" 
-            "Queue"="Geometry-1"
-            "RenderType"="Opaque"
-            "LightMode"="UniversalForward"
+        Tags
+        {
+            "RenderPipeline" = "UniversalRenderPipeline"
+            "Queue" = "Geometry-1"
         }
-        LOD 100
 
-        Cull Off
-        ZWrite Off
-        ZTest LEqual
-        
         Pass
         {
+            Name "AlwaysBehindPass"
+            Cull Off
+            ZWrite Off
+            ZTest LEqual
             ColorMask RGBA
             Blend Off
 
             HLSLPROGRAM
-            #pragma vertex vert
-            #pragma fragment frag
+            #pragma vertex Vert
+            #pragma fragment Frag
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
 
-            struct Attributes { float4 positionOS : POSITION; };
-            struct Varyings  { float4 positionCS : SV_POSITION; };
+            struct Attributes
+            {
+                float4 positionOS : POSITION;
+            };
 
-            Varyings vert(Attributes IN)
+            struct Varyings
+            {
+                float4 positionCS : SV_POSITION;
+            };
+
+            Varyings Vert(Attributes IN)
             {
                 Varyings OUT;
                 OUT.positionCS = TransformObjectToHClip(IN.positionOS);
                 return OUT;
             }
 
-            half4 frag(Varyings IN) : SV_Target
+            half4 Frag(Varyings IN) : SV_Target
             {
-                return half4(0,0,0,1); // solid black
+                return half4(0, 0, 0, 1);
             }
             ENDHLSL
         }
     }
-    Fallback Off
 }

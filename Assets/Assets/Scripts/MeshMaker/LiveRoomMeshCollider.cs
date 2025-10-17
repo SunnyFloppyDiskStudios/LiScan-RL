@@ -27,6 +27,7 @@ namespace Player.MeshMaker {
         var meshObjects = FindObjectsByType<MeshFilter>(FindObjectsSortMode.None);
 
         foreach (var mf in meshObjects) {
+            if (mf.gameObject.CompareTag("Player")) return;
             if (mf.sharedMesh is null) continue;
 
             var anchor = mf.GetComponentInParent<OVRSceneAnchor>();

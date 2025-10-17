@@ -62,7 +62,7 @@ namespace Player.Flow {
                     if (X.WasPressedThisFrame()) {
                         // user activated game. show the objective.
                         HideGUIFancy(beginGUI, 2);
-                        ToggleGUI(beginObject, false);
+                        HideGUIFancy(beginText, 2);
                     }
                     break;
                 
@@ -121,15 +121,15 @@ namespace Player.Flow {
         // Tweening as functions. It's wayyyyyyy easier because i dont have to write this on EVERY switch statement.
         private void ShowGUIFancy(Transform gui, int s) {
             state = s;
-            gui.DOScale(new Vector3(-0.1f, 0.1f, 1f), 0.2f)
+            gui.DOScale(new Vector3(-0.01f, 0.01f, 1f), 0.2f)
                 .OnComplete(() => gui.DOScale(new Vector3(-1f, 0.1f, 1f), 0.25f)
                     .OnComplete(() => gui.DOScale(new Vector3(-1f, 1f, 1f), 0.25f)));
         }
 
         private void HideGUIFancy(Transform gui, int s) {
             state = s;
-            gui.DOScale(new Vector3(-1f, 0.1f, 1f), 0.2f)
-                .OnComplete(() => gui.DOScale(new Vector3(0f, 0.1f, 0f), 0.25f)
+            gui.DOScale(new Vector3(-1f, 0.01f, 1f), 0.2f)
+                .OnComplete(() => gui.DOScale(new Vector3(0f, 0.01f, 0f), 0.25f)
                     .OnComplete(() => gui.DOScale(Vector3.zero, 0.25f)));
         }
 
