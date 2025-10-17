@@ -7,3 +7,6 @@ LIDAR scanning exploration game of your own real life space!
 - FMOD Audio Engine - [fmod.com](https://fmod.com)
 - DOTween Animation/Tweening SDK - [dotween.demigiant.com](https://dotween.demigiant.com/)
 - QuickOutline - [assetstore.unity.com](https://assetstore.unity.com/packages/tools/particles-effects/quick-outline-115488)
+
+### Notes
+Comments in code are more of an explanation of my decision making. Not exactly reflective definitions of everything.
