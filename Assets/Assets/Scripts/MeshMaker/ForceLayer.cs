@@ -9,7 +9,7 @@ namespace Player.MeshMaker {
         private int ranTimes = 0;
         
         void Start() {
-            InvokeRepeating(nameof(FindObjects), 5f, 1f); // so it's not reiterating through HUNDEREDS of objects each frame
+            InvokeRepeating(nameof(FindObjects), 0f, 5f); // so it's not reiterating through HUNDEREDS of objects each frame
         }
 
         void Update() {
