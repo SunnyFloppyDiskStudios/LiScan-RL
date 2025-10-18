@@ -102,7 +102,7 @@ namespace Player.Flow {
                 
                 case 7:
                     // hide they can move. bit more complicated because it's not an input action from the xr controller.
-                    var offset = 2f;
+                    var offset = 0.2f;
                     
                     if (!cPosSet) { 
                         cPos = cam.position;
@@ -110,9 +110,9 @@ namespace Player.Flow {
                     
                     // hey that layout looks funny... it'S AIIIII NOOOO IT'S AIII NOOOOOOOOO
                     // no actually it's just more readable. not ai.
-                    if (cam.position.x > cPos.x + offset ||
-                        cam.position.y > cPos.y + offset ||
-                        cam.position.z > cPos.z + offset) {
+                    if (Mathf.Abs(cam.position.x - cPos.x) > offset ||
+                        Mathf.Abs(cam.position.y - cPos.y) > offset ||
+                        Mathf.Abs(cam.position.z - cPos.z) > offset) {
                         HideGUIFancy(moveGUI, 8);
                     }
                     break;
