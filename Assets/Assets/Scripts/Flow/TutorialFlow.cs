@@ -97,24 +97,23 @@ namespace Player.Flow {
                 
                 case 6:
                     // show how to move (really just telling them that they *can* move)
+                    cPosSet = false;
                     ShowGUIFancy(moveGUI, 7);
                     break;
                 
                 case 7:
                     // hide they can move. bit more complicated because it's not an input action from the xr controller.
-                    var offset = 0.2f;
+                    var offset = 0.1f;
                     
                     if (!cPosSet) { 
                         cPos = cam.position;
+                        cPosSet = true;
                     }
-                    
-                    // hey that layout looks funny... it'S AIIIII NOOOO IT'S AIII NOOOOOOOOO
-                    // no actually it's just more readable. not ai.
-                    if (Mathf.Abs(cam.position.x - cPos.x) > offset ||
-                        Mathf.Abs(cam.position.y - cPos.y) > offset ||
-                        Mathf.Abs(cam.position.z - cPos.z) > offset) {
+
+                    if (Vector3.Distance(cPos, cam.position) > offset) { // .Distance is super handy because it works on all axis and negative values too!
                         HideGUIFancy(moveGUI, 8);
                     }
+                    
                     break;
             }
         }
